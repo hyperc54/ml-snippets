@@ -3,6 +3,14 @@
 """
 Created on Tue Apr 24 21:15:36 2018
 
+This snippet creates a simple dataset that a Decision Tree model
+should model nicely.
+
+The density of points can be adjusted (N)
+
+There's also code for prediction, decision surfaces plotting, and
+a visualisation of the model.
+
 @author: pierre
 """
 import random as rnd
@@ -15,29 +23,20 @@ import matplotlib.pyplot as plt
 from sklearn import tree
 
 
-#%% Create simple dataset
+#%% Create simple dataset / 4 filled squares, 2 per label
 columns = ('x', 'y', 'label')
 
-sparse_data = \
-    [(0.1, 0.2, 1), (0.3, 0.4, 1), (0.4, 0.1, 1), (0.3, 0.3, 1), (0.25, 0.4, 1),
-     (0.60, 0.2, 2), (0.78, 0.1, 2), (0.55, 0.4, 2), (0.85, 0.2, 2), (0.75, 0.3, 2),
-     (0.65, 0.82, 1), (0.75, 0.75, 1), (0.80, 0.65, 1), (0.90, 0.60, 1), (0.86, 0.7, 1),
-     (0.1, 0.65, 2), (0.2, 0.75, 2), (0.25, 0.55, 2), (0.45, 0.85, 2), (0.3, 0.70, 2)]
-
 N = 200
+
 random_half = lambda : rnd.random()/2
-dense_data = \
+data = \
     [(random_half(), random_half(), 1) for i in range(N)] \
     + [(random_half() + 0.5, random_half() + 0.5, 1) for i in range(N)] \
     + [(random_half(), random_half() + 0.5, 2) for i in range(N)] \
     + [(random_half() + 0.5, random_half(), 2) for i in range(N)]
 
-which_data = dense_data
-
-
-
 #%% Load dataframe
-df = pd.DataFrame(data=which_data, columns=columns)
+df = pd.DataFrame(data=data, columns=columns)
 
 #%% Plot the data
 colors = {1:'red', 2:'blue'}
