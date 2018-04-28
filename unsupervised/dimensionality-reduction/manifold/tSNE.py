@@ -39,20 +39,17 @@ from sklearn import manifold
 
 
 #%% Load
-
 digits = load_digits()
 iris = load_iris()
 olivetti = fetch_olivetti_faces()
 
 
 #%% Global parameters
-
 dataset = olivetti
 is_data_image = True # Turn on/off depending on dataset
 
 
 #%% Visualise data/samples
-
 if is_data_image:
     n_images = 6
     # Visualise random images
@@ -68,7 +65,6 @@ else:
     
 
 #%% Perform manifold learning with t-SNE
-
 """
  - n_components: nb of outputs dimensions
  - n_iter, t-SNE runs a gradient descent over n_iter iterations
@@ -82,7 +78,6 @@ output = tsne.fit_transform(dataset.data)
 
 
 #%% Visualise output
-
 if is_data_image:
     plot_embedding_images(output)
 else:
