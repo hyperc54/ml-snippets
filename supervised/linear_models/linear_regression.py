@@ -44,7 +44,6 @@ if low_d:
     plt.scatter(final_data, dataset.target) 
     
 #%% Perform linear regression
-
 lr = linear_model.LinearRegression()
 lr.fit(final_data.reshape(-1,1), dataset.target)
 
@@ -52,7 +51,6 @@ lr.fit(final_data.reshape(-1,1), dataset.target)
 predictions = lr.predict(final_data.reshape(-1,1))
 
 #%% Evaluate
-
 print("R2 score")
 print(lr.score(final_data.reshape(506,1), dataset.target))
 print(" or:")
@@ -67,7 +65,6 @@ print("\n")
 print("MSE")
 print(mean_squared_error(dataset.target, predictions))
     
-
 
 #%% Visualise
 if low_d:
